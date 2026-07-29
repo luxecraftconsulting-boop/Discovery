@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crestline Custom Homes: Phase 0 Discovery &amp; Review Report (SAMPLE)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0d0d0d; --gold:#B8972A; --gold-light:#D8BD71; --dark:#232225;
+    --mid:#535353; --bg:#f7f5f0; --tan:#F5F0E8;
+    --green:#2D6A4F; --amber:#7D5A00; --red:#7B2D2D;
+    --str-bg:#E1F5EE; --str-bd:#5DCAA5;
+    --crit-bg:#fcebeb; --crit-bd:#f09595;
+    --high-bg:#FAEEDA; --high-bd:#EF9F27;
+    --med-bg:#fdf8ec; --med-bd:#D8BD71;
+    --opp-bg:#F8F3E2; --opp-bd:#B8972A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--mid);font-size:15px;line-height:1.6;}
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;color:var(--dark);}
+
+  .sample-ribbon{background:var(--gold);color:var(--black);text-align:center;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;}
+
+  header{
+    position:relative; overflow:hidden;
+    border-bottom:3px solid var(--gold);
+    padding:46px 24px 38px; text-align:center;
+    background:
+      radial-gradient(120% 140% at 50% -10%, rgba(28,58,88,.55) 0%, rgba(10,30,52,0) 55%),
+      repeating-linear-gradient(0deg,  rgba(173,201,224,.05) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(90deg, rgba(173,201,224,.05) 0 1px, transparent 1px 34px),
+      linear-gradient(180deg, #0a2034 0%, #081a2c 100%);
+  }
+  /* refined architectural linework: a few intentional lines + corner dimension ticks */
+  header::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(34deg, transparent calc(50% - .5px), rgba(173,201,224,.09) calc(50% - .5px) calc(50% + .5px), transparent calc(50% + .5px)),
+      linear-gradient(-16deg, transparent calc(76% - .5px), rgba(173,201,224,.06) calc(76% - .5px) calc(76% + .5px), transparent calc(76% + .5px));
+  }
+  /* gold corner registration marks (sparing accent) */
+  header::after{
+    content:""; position:absolute; inset:18px; pointer-events:none; border:1px solid rgba(184,151,42,.18);
+    -webkit-mask:linear-gradient(#000 0 0) top left/26px 1px no-repeat,linear-gradient(#000 0 0) top left/1px 26px no-repeat,linear-gradient(#000 0 0) top right/26px 1px no-repeat,linear-gradient(#000 0 0) top right/1px 26px no-repeat,linear-gradient(#000 0 0) bottom left/26px 1px no-repeat,linear-gradient(#000 0 0) bottom left/1px 26px no-repeat,linear-gradient(#000 0 0) bottom right/26px 1px no-repeat,linear-gradient(#000 0 0) bottom right/1px 26px no-repeat;
+            mask:linear-gradient(#000 0 0) top left/26px 1px no-repeat,linear-gradient(#000 0 0) top left/1px 26px no-repeat,linear-gradient(#000 0 0) top right/26px 1px no-repeat,linear-gradient(#000 0 0) top right/1px 26px no-repeat,linear-gradient(#000 0 0) bottom left/26px 1px no-repeat,linear-gradient(#000 0 0) bottom left/1px 26px no-repeat,linear-gradient(#000 0 0) bottom right/26px 1px no-repeat,linear-gradient(#000 0 0) bottom right/1px 26px no-repeat;
+  }
+  header > *{position:relative; z-index:1;}
+  header .cobrand{display:flex;align-items:center;justify-content:center;gap:26px;margin-bottom:22px;}
+  header .cobrand .cb-client{display:flex;align-items:center;gap:11px;}
+  header .cobrand .cb-x{color:var(--gold-light);font-size:18px;font-weight:300;opacity:.55;}
+  header .cobrand .cb-name{color:#e3edf5;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.5px;line-height:1.15;text-align:left;}
+  header .cobrand .cb-name small{display:block;color:#9fb6c9;font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-top:2px;}
+  header .cobrand img.jt{height:30px;width:auto;display:block;}
+  header .brand{color:var(--gold-light);font-size:12px;letter-spacing:4px;text-transform:uppercase;font-weight:600;margin-bottom:14px;}
+  header h1{color:#fff;font-size:44px;font-weight:600;line-height:1.1;}
+  header .subtitle{color:var(--gold-light);font-family:'Cormorant Garamond',serif;font-size:22px;margin-top:8px;font-style:italic;}
+  header .meta{color:#bbb;font-size:13px;margin-top:14px;}
+  .badge{display:inline-block;background:var(--gold);color:var(--black);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-top:18px;}
+  .pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px;}
+  .pill{background:rgba(7,22,38,.62);border:1px solid rgba(216,189,113,.32);border-radius:10px;padding:10px 18px;min-width:118px;backdrop-filter:blur(1px);}
+  .pill .num{color:var(--gold);font-size:24px;font-weight:700;font-family:'Cormorant Garamond',serif;line-height:1;}
+  .pill .lbl{color:#aaa;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--dark);display:flex;justify-content:center;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav button{background:none;border:none;color:#cfcfcf;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.5px;padding:16px 22px;cursor:pointer;border-bottom:3px solid transparent;transition:.2s;}
+  nav button:hover{color:#fff;}
+  nav button.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+  main{max-width:1240px;margin:0 auto;padding:40px 36px 80px;}
+  .tab{display:none;}
+  .tab.active{display:block;animation:fade .3s;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .sec-title{font-size:30px;font-weight:600;margin:42px 0 6px;padding-left:14px;border-left:4px solid var(--gold);}
+  .sec-title:first-child{margin-top:0;}
+  .sec-sub{font-size:13px;color:#8a8a8a;margin:0 0 18px 18px;text-transform:uppercase;letter-spacing:1.5px;}
+  .sec-title.red{border-left-color:var(--red);}
+  .sec-title.amber{border-left-color:#EF9F27;}
+  .sec-title.gold{border-left-color:var(--gold);}
+  .sec-title.goldlight{border-left-color:var(--gold-light);}
+  .sec-title.green{border-left-color:var(--str-bd);}
+
+  .card{background:#fff;border:1px solid #e6e2d8;border-radius:12px;padding:26px 30px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .card p+p{margin-top:14px;}
+
+  .determ{border-radius:12px;padding:26px 30px;margin-bottom:18px;color:#fff;border-left:6px solid var(--gold);}
+  .determ.conditions{background:var(--amber);}
+  .determ h3{color:#fff;font-size:26px;margin-bottom:8px;}
+  .determ p{color:#f4ead0;}
+  .cond-list{margin-top:16px;display:grid;gap:10px;}
+  .cond{background:rgba(255,255,255,.12);border-radius:8px;padding:14px 16px;font-size:14px;color:#fff;}
+  .cond b{color:#FFE9A8;}
+
+  .triptych{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:18px;}
+  .tript-card{background:#fff;border-top:4px solid var(--gold);border-radius:0 0 12px 12px;border:1px solid #e6e2d8;border-top:4px solid var(--gold);padding:22px;}
+  .tript-card h4{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--dark);margin-bottom:10px;line-height:1.25;}
+  .tript-card ul{list-style:none;}
+  .tript-card li{font-size:13.5px;padding:6px 0 6px 18px;position:relative;border-bottom:1px dashed #eee;}
+  .tript-card li:last-child{border-bottom:none;}
+  .tript-card li::before{content:"\2013";color:var(--gold);position:absolute;left:0;}
+
+  .team-banner{background:var(--tan);border:1px solid var(--gold-light);border-radius:10px;padding:14px 20px;font-size:14px;margin-bottom:14px;}
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;margin-bottom:18px;}
+  .team-card{background:#fff;border:1px solid #e6e2d8;border-radius:10px;padding:16px 18px;}
+  .team-card .name{font-weight:700;color:var(--dark);font-size:14.5px;}
+  .team-card .role{font-size:12px;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+  .score{display:inline-block;font-size:11px;font-weight:700;border-radius:14px;padding:2px 10px;margin-left:6px;vertical-align:middle;}
+  .score.hi{background:var(--str-bg);color:var(--green);}
+  .score.md{background:var(--med-bg);color:var(--amber);}
+  .score.lo{background:var(--crit-bg);color:var(--red);}
+  .ext-flag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--dark);color:var(--gold-light);border-radius:4px;padding:2px 8px;margin-left:6px;vertical-align:middle;}
+  .team-card .take{font-size:13px;color:var(--mid);}
+
+  .patterns{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:18px;}
+  .pattern{background:var(--tan);border-radius:10px;padding:16px 18px;}
+  .pattern h5{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+  .pattern p{font-size:13px;}
+
+  ol.moves{counter-reset:m;list-style:none;margin-bottom:18px;}
+  ol.moves li{background:#fff;border:1px solid #e6e2d8;border-radius:10px;padding:18px 20px 18px 64px;margin-bottom:10px;position:relative;}
+  ol.moves li::before{counter-increment:m;content:counter(m);position:absolute;left:18px;top:18px;width:32px;height:32px;border-radius:50%;background:var(--black);color:var(--gold);font-family:'Cormorant Garamond',serif;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;}
+  .move-title{font-weight:700;color:var(--dark);font-size:14.5px;}
+  .move-out{font-size:13.5px;margin-top:4px;}
+  .tags{margin-top:8px;}
+  .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:4px;padding:2px 8px;margin-right:6px;}
+  .tag.software{background:#EAF0F7;color:#2D4A6A;}
+  .tag.process{background:var(--med-bg);color:var(--amber);}
+  .tag.communication{background:var(--str-bg);color:var(--green);}
+  .tag.people{background:#F2EAF7;color:#5A2D6A;}
+
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:13.5px;margin-bottom:18px;}
+  th{background:var(--dark);color:var(--gold-light);text-align:left;padding:10px 14px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;}
+  td{padding:10px 14px;border-bottom:1px solid #efece4;vertical-align:top;}
+  td.lbl{background:var(--tan);font-weight:600;color:var(--dark);width:32%;}
+
+  .legend{display:flex;gap:18px;flex-wrap:wrap;background:#fff;border:1px solid #e6e2d8;border-radius:10px;padding:14px 20px;margin-bottom:24px;font-size:13px;}
+  .legend span{display:flex;align-items:center;gap:7px;}
+  .dot{width:13px;height:13px;border-radius:50%;display:inline-block;}
+  .dot.g{background:var(--str-bd);} .dot.a{background:#EF9F27;} .dot.r{background:#c0392b;} .dot.o{background:var(--gold);}
+
+  .phase{background:#fff;border:1px solid #e6e2d8;border-radius:12px;margin-bottom:16px;overflow:hidden;}
+  .phase-head{background:var(--dark);color:#fff;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+  .phase-head h3{color:var(--gold-light);font-size:22px;}
+  .phase-head .chev{color:var(--gold);font-size:18px;transition:.2s;}
+  .phase.open .chev{transform:rotate(90deg);}
+  .phase-body{display:none;padding:8px 22px 18px;}
+  .phase.open .phase-body{display:block;}
+  .step{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px dashed #eee;}
+  .step:last-child{border-bottom:none;}
+  .step .ico{width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:700;}
+  .ico.g{background:var(--str-bd);} .ico.a{background:#EF9F27;} .ico.r{background:#c0392b;} .ico.o{background:var(--gold);}
+  .step .txt{font-size:14px;}
+  .step .txt b{color:var(--dark);}
+  .step .lnk{font-size:12px;color:var(--gold);font-weight:700;cursor:pointer;text-decoration:underline dotted;}
+
+  .item{background:#fff;border-left:5px solid #ccc;border:1px solid #e6e2d8;border-left-width:5px;border-radius:10px;padding:16px 20px;margin-bottom:10px;cursor:pointer;transition:.15s;}
+  .item:hover{box-shadow:0 3px 10px rgba(0,0,0,.08);transform:translateY(-1px);}
+  .item .t{font-weight:700;color:var(--dark);font-size:14.5px;}
+  .item .d{font-size:13px;margin-top:3px;}
+  .item.strength{border-left-color:var(--str-bd);background:var(--str-bg);cursor:default;}
+  .item.strength:hover{transform:none;box-shadow:none;}
+  .item.crit{border-left-color:var(--crit-bd);background:var(--crit-bg);}
+  .item.high{border-left-color:var(--high-bd);background:var(--high-bg);}
+  .item.med{border-left-color:var(--med-bd);background:var(--med-bg);}
+  .item.opp{border-left-color:var(--opp-bd);background:var(--opp-bg);}
+
+  .statrow{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px;}
+  .stat{flex:1;min-width:130px;background:#fff;border:1px solid #e6e2d8;border-radius:10px;text-align:center;padding:16px 10px;}
+  .stat .n{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--dark);}
+  .stat .l{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:#999;margin-top:2px;}
+  .stat.red .n{color:var(--red);} .stat.amb .n{color:#EF9F27;} .stat.gld .n{color:var(--gold);} .stat.grn .n{color:var(--green);}
+
+  .wkblock{background:#fff;border:1px solid #e6e2d8;border-radius:12px;margin-bottom:16px;overflow:hidden;}
+  .wk-head{background:var(--black);padding:14px 22px;}
+  .wk-head h3{color:var(--gold);font-size:22px;}
+  .wk-head span{color:#bbb;font-size:12.5px;}
+  .wk-body{padding:16px 22px;}
+  .wk-body ul{list-style:none;}
+  .wk-body li{padding:7px 0 7px 20px;position:relative;font-size:14px;border-bottom:1px dashed #eee;}
+  .wk-body li:last-child{border-bottom:none;}
+  .wk-body li::before{content:"◆";color:var(--gold);font-size:9px;position:absolute;left:2px;top:11px;}
+
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(13,13,13,.65);z-index:100;align-items:center;justify-content:center;padding:20px;}
+  .modal-bg.show{display:flex;}
+  .modal{background:#fff;border-radius:14px;max-width:680px;width:100%;max-height:84vh;overflow-y:auto;border-top:6px solid var(--gold);}
+  .modal-head{padding:22px 28px 14px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+  .modal-head h3{font-size:24px;line-height:1.2;}
+  .modal-close{background:var(--black);color:var(--gold);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;flex-shrink:0;}
+  .modal-body{padding:18px 28px 26px;}
+  .mb-sec{margin-bottom:16px;}
+  .mb-sec h5{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+  .mb-sec p{font-size:14px;}
+  .mb-sec.jt{background:var(--tan);border-radius:8px;padding:14px 16px;border-left:4px solid var(--gold);}
+
+  footer{background:var(--black);color:#999;text-align:center;padding:36px 20px;font-size:13px;border-top:4px solid var(--gold);}
+  footer .serif{color:var(--gold-light);font-size:22px;font-style:italic;margin-bottom:6px;}
+  @media(max-width:640px){header h1{font-size:30px;} nav button{padding:12px 12px;font-size:11.5px;}}
+</style>
+</head>
+<body>
+
+<div class="sample-ribbon">Sample Report &nbsp;·&nbsp; Crestline Custom Homes is a fictional company. This report illustrates the format and depth of an actual LuxeCraft Phase 0 deliverable</div>
+
+<header>
+  <div class="cobrand">
+    <!-- Fictional client mark: Crestline Custom Homes -->
+    <span class="cb-client">
+      <svg width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Crestline Custom Homes">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#e3edf5" stroke-width="2"/>
+        <path d="M26 58 L50 38 L74 58" fill="none" stroke="#e3edf5" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M33 58 L50 44 L67 58" fill="none" stroke="var(--gold-light)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="34" y1="66" x2="66" y2="66" stroke="#e3edf5" stroke-width="2"/>
+      </svg>
+      <span class="cb-name">Crestline Custom Homes<small>Columbus, Ohio</small></span>
+    </span>
+    <span class="cb-x">&times;</span>
+    <img class="jt" src="data:image/png;base64,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" alt="Experience driven by JobTread">
+  </div>
+  <h1>Crestline Custom Homes</h1>
+  <div class="subtitle">Phase 0: Discovery &amp; Review Report</div>
+  <div class="meta">Columbus, Ohio &nbsp;·&nbsp; Prepared by Megan Peyton &nbsp;·&nbsp; June 2026</div>
+  <div class="badge">Phase 0 Complete</div>
+  <div class="pills">
+    <div class="pill"><div class="num">Conditional</div><div class="lbl">Training Readiness</div></div>
+    <div class="pill"><div class="num">2</div><div class="lbl">Proceed Conditions</div></div>
+    <div class="pill"><div class="num">4</div><div class="lbl">High-Priority Gaps</div></div>
+    <div class="pill"><div class="num">4</div><div class="lbl">Opportunities</div></div>
+    <div class="pill"><div class="num">6 / 7</div><div class="lbl">Team Respondents</div></div>
+    <div class="pill"><div class="num">6</div><div class="lbl">Strengths</div></div>
+  </div>
+</header>
+
+<nav>
+  <button class="active" onclick="showTab(0,this)">Executive Brief</button>
+  <button onclick="showTab(1,this)">Workflow Map</button>
+  <button onclick="showTab(2,this)">Gaps &amp; Opportunities</button>
+  <button onclick="showTab(3,this)">Readiness Assessment</button>
+  <button onclick="showTab(4,this)">Phase 1 Scope</button>
+  <button onclick="showTab(5,this)">Implementation Roadmap</button>
+</nav>
+
+<main>
+
+<!-- ===================== TAB 1 ===================== -->
+<section class="tab active">
+
+  <h2 class="sec-title">Executive Brief</h2>
+  <p class="sec-sub">Written for ownership. This is the discussion page for our review call</p>
+
+  <div class="card">
+    <p><b style="color:var(--dark)">Mark, you've built a real company, and the foundation inside JobTread is stronger than you think.</b> Every active job lives in the system. Your cost catalog is genuinely well-organized, your vendor and sub records are complete, and your team didn't push back on this review. They leaned into it. That matters, because the most expensive part of any implementation is resistance, and you don't have a resistance problem. You have a follow-through problem in a few specific places, and follow-through problems are fixable.</p>
+    <p>Here's what the discovery surfaced, in your own words: <i>"Everything still runs through me,"</i> <i>"the field finds out about changes when the client mentions them,"</i> and <i>"I don't trust the job costing numbers until Susan closes the month."</i> Those three statements map exactly to the three things this engagement exists to fix: your time is the company's bottleneck on estimates, change orders, and approvals; your field and office teams are each working from their own version of the truth; and your financial information arrives weeks after the decisions it should have informed.</p>
+    <p>Two foundational issues have to be corrected in parallel with training. Your budget templates exist but aren't applied consistently from job to job, and bills are being entered in QuickBooks first and syncing backward into JobTread, which is why your real-time job costing never matches reality. Neither is a rebuild. Both are workflow corrections with a clear owner and timeline.</p>
+    <p>The path forward: a 12-week Phase 1 implementation that takes estimating, change orders, scheduling, and client communication off your desk and puts them into a system your team already wants to use.</p>
+  </div>
+
+  <div class="determ conditions">
+    <h3>Training Readiness: PROCEED WITH CONDITIONS</h3>
+    <p>Training can begin across most modules immediately. Two foundational corrections must run in parallel during Weeks 1–2, or financial training will produce misleading numbers and erode the team's trust in the system.</p>
+    <div class="cond-list">
+      <div class="cond"><b>Condition 1: Budget template standardization.</b> Templates exist but are applied inconsistently; three of the last five jobs were estimated from a copied prior job instead. Corrective action: lock a single master estimate template and retire job-copies as a starting point. Timeline: Weeks 1–2. Owner: Megan with Mark's sign-off.</div>
+      <div class="cond"><b>Condition 2: Bill entry direction correction.</b> Bills currently enter QuickBooks Online first and sync back to JobTread, where they land uncategorized against the budget. Corrective action: introduce the JobTread-first bill workflow in a scheduled Week 2 session with Susan (bookkeeper) and build the SOP together. Timeline: Week 2. Owner: Megan + Susan.</div>
+    </div>
+  </div>
+
+  <h2 class="sec-title">The Three Owner Outcomes</h2>
+  <p class="sec-sub">What this engagement changes for you, specifically</p>
+  <div class="triptych">
+    <div class="tript-card">
+      <h4>Where are you being pulled in today, and what does this free you from?</h4>
+      <ul>
+        <li>Every estimate starts and ends on your desk. A locked template plus a trained estimator workflow means Travis can build 80% of an estimate before you ever see it.</li>
+        <li>You personally approve every change verbally, then chase the paperwork later. Signed digital change orders mean approval happens once, in writing, without you in the loop twice.</li>
+        <li>Clients call you for status updates. The customer portal answers those calls before they're made.</li>
+      </ul>
+    </div>
+    <div class="tript-card">
+      <h4>Where are your teams talking past each other, and what changes?</h4>
+      <ul>
+        <li>Field learns about scope changes from the client. Fix: change orders publish to the field schedule and daily log the moment they're signed.</li>
+        <li>Office and field keep separate schedules (JobTread vs. Cole's whiteboard). Fix: one restructured schedule both teams actually work from.</li>
+        <li>Susan and the PM reconcile costs by email at month-end. Fix: bills categorized at entry, visible to both the day they arrive.</li>
+      </ul>
+    </div>
+    <div class="tript-card">
+      <h4>Where does information stop moving, and where does it start moving on its own?</h4>
+      <ul>
+        <li>Selections live in Dana's spreadsheet and die there. Fix: the Selections module pushes approved decisions straight into the budget and schedule.</li>
+        <li>Estimate-to-contract handoff is a re-typing exercise. Fix: proposals generate directly from the approved estimate.</li>
+        <li>Close-out learnings never reach the cost catalog. Fix: an end-of-job review loop updates unit costs so every estimate gets sharper.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec-title">Team Assessment</h2>
+  <p class="sec-sub">6 of 7 team members responded, which is full coverage across office, field, finance, and design</p>
+  <div class="team-banner"><b>Strong participation signal:</b> every department is represented, including both external partners. The one non-respondent (seasonal field crew member) does not affect coverage of any core workflow.</div>
+  <div class="team-grid">
+    <div class="team-card"><div class="name">Mark Sullivan <span class="score md">Comfort 6/10</span></div><div class="role">Owner</div><div class="take">Uses estimating and budgets daily; self-aware that he's the bottleneck and ready to delegate.</div></div>
+    <div class="team-card"><div class="name">Dana Whitfield <span class="score hi">Comfort 8/10</span></div><div class="role">Office Manager</div><div class="take">Highest initiative in the company. She built her own selections spreadsheet and watched JT training videos unprompted.</div></div>
+    <div class="team-card"><div class="name">Travis Boone <span class="score md">Comfort 5/10</span></div><div class="role">Project Manager</div><div class="take">Solid on jobs and documents; avoids the schedule module because the current schedule is "too slow to be useful."</div></div>
+    <div class="team-card"><div class="name">Cole Reyes <span class="score lo">Comfort 3/10</span></div><div class="role">Field Lead</div><div class="take">Runs the field from a whiteboard and group texts; open to the app if "it tells me what actually changed."</div></div>
+    <div class="team-card"><div class="name">Susan Hartley <span class="score md">Comfort 4/10</span> <span class="ext-flag">External</span></div><div class="role">Bookkeeper</div><div class="take">Enters bills in QBO first by long habit; flagged that JT costs "never match my books," which was the single most revealing response in the assessment.</div></div>
+    <div class="team-card"><div class="name">Priya Nair <span class="score lo">Comfort 2/10</span> <span class="ext-flag">External</span></div><div class="role">Designer / Drafting Partner</div><div class="take">Has no JobTread access; receives scope by email and "finds out about revisions late." A defined drafting handoff is a business risk item, not a preference.</div></div>
+  </div>
+  <div class="patterns">
+    <div class="pattern"><h5>Adoption Ceiling</h5><p>Composite comfort of 4.7/10, but that's feature-specific, not general. Jobs, documents, and estimates are in daily use; scheduling, change orders, and the portal are essentially untouched.</p></div>
+    <div class="pattern"><h5>Workarounds in Use</h5><p>Dana's selections spreadsheet, Cole's whiteboard schedule, field group texts, and verbal change approvals. Each one is a future dispute or a margin leak.</p></div>
+    <div class="pattern"><h5>Success Champion Opportunity</h5><p>Dana Whitfield is the right Success Champion. She has the highest initiative, positional access to every job, and she's already holding informal accountability. This is an owner decision to make, and it unlocks her.</p></div>
+    <div class="pattern"><h5>Adoption Readiness</h5><p>This team is more ready than the scores suggest. Nobody is resisting the system. They're resisting the parts of it that were never set up to serve them. Fix the setup and adoption follows.</p></div>
+  </div>
+
+  <h2 class="sec-title">Top 5 Priority Moves</h2>
+  <ol class="moves">
+    <li><div class="move-title">Lock one master estimate template and correct the bill entry direction.</div><div class="move-out">Your job costing becomes trustworthy in real time, so decisions stop waiting for month-end. (Proceed conditions, Weeks 1–2.)</div><div class="tags"><span class="tag software">software</span><span class="tag process">process</span></div></li>
+    <li><div class="move-title">Move change orders out of conversation and into signed digital approvals.</div><div class="move-out">Every scope change carries its price and signature before work begins, so margin stops walking out the door.</div><div class="tags"><span class="tag process">process</span><span class="tag software">software</span></div></li>
+    <li><div class="move-title">Restructure the construction schedule so the field actually uses it.</div><div class="move-out">One schedule replaces the whiteboard and group texts; Cole's crew sees changes the moment they happen. (Weeks 3–4, and this one isn't deferred.)</div><div class="tags"><span class="tag software">software</span><span class="tag communication">communication</span></div></li>
+    <li><div class="move-title">Activate the customer portal and the Selections module.</div><div class="move-out">Clients stop calling you for updates, and allowance decisions stop living in a spreadsheet. They flow into the budget signed and dated.</div><div class="tags"><span class="tag communication">communication</span><span class="tag software">software</span></div></li>
+    <li><div class="move-title">Name Dana Whitfield as Success Champion and build the role around her.</div><div class="move-out">The system gets an internal owner who isn't you, which is the only way you take a vacation that sticks.</div><div class="tags"><span class="tag people">people</span></div></li>
+  </ol>
+
+  <h2 class="sec-title">Scaling Roles</h2>
+  <div class="card">
+    <p>Mark's stated goal is growing from 6 to 10 builds per year within three years. The account audit and team assessment both point to the same structural gap: <b style="color:var(--dark)">there is no defined Estimator role</b> (right now the owner is the estimator), and no Project Coordinator owning the handoff between contract signing and field mobilization. Week 1 captures Mark's vision for these roles; the workflow mapping sessions will refine them as gaps surface. We will build JobTread roles and permissions for the company Crestline is becoming, not just the company it is today.</p>
+  </div>
+
+  <h2 class="sec-title">Next Steps</h2>
+  <div class="card">
+    <p><b style="color:var(--dark)">Before Week 1:</b> Megan to request Crestline's master estimate spreadsheet and the last three completed job budgets (Excel), and schedule the Week 1 and Week 2 sessions.</p>
+    <p><b style="color:var(--dark)">Decision for Mark:</b> confirm Dana Whitfield as Success Champion by name, before Week 1.</p>
+    <p><b style="color:var(--dark)">Week 1 session agenda:</b> front-end workflow mapping kickoff (lead → estimate → drafting → contract, including Priya's handoff and turnaround expectations), owner role vision for Estimator and Project Coordinator, CRM/lead pipeline review, Success Champion confirmation.</p>
+    <p><b style="color:var(--dark)">Week 2 session agenda:</b> finance workflow correction with Susan. We'll introduce the JobTread-first bill entry workflow and build the SOP together in session. (We do not pause Susan's current process before the replacement exists.)</p>
+  </div>
+
+</section>
+
+<!-- ===================== TAB 2 ===================== -->
+<section class="tab">
+  <h2 class="sec-title">Workflow Map</h2>
+  <p class="sec-sub">The LuxeCraft master Lead-to-Warranty workflow, overlaid with Crestline's current state</p>
+
+  <div class="legend">
+    <span><span class="dot g"></span> Running well today</span>
+    <span><span class="dot a"></span> Gap</span>
+    <span><span class="dot r"></span> Proceed condition</span>
+    <span><span class="dot o"></span> Opportunity</span>
+  </div>
+
+  <div class="phase open">
+    <div class="phase-head" onclick="togglePhase(this)"><h3>1 · Lead</h3><span class="chev">▶</span></div>
+    <div class="phase-body">
+      <div class="step"><span class="ico g">✓</span><div class="txt"><b>Lead capture &amp; first contact.</b> Inquiries reach Mark reliably via website and referrals; response time is strong.</div></div>
+      <div class="step"><span class="ico a">!</span><div class="txt"><b>Lead pipeline tracking.</b> Leads live in Mark's inbox and memory; no JobTread pipeline stages, no visibility for anyone else. <span class="lnk" onclick="openModal('m-pipeline')">Details</span></div></div>
+      <div class="step"><span class="ico g">✓</span><div class="txt"><b>Qualification conversation.</b> Mark's qualification instincts are excellent; the criteria just live in his head rather than a documented checklist.</div></div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head" onclick="togglePhase(this)"><h3>2 · Estimating</h3><span class="chev">▶</span></div>
+    <div class="phase-body">
+      <div class="step"><span class="ico g">✓</span><div class="txt"><b>Cost catalog.</b> Well-organized, consistently coded, and genuinely a strength. Most accounts at this stage don't have this.</div></div>
+      <div class="step"><span class="ico r">✕</span><div class="txt"><b>Estimate template.</b> Templates exist, but three of the last five jobs were estimated by copying a prior job, carrying old pricing and structure forward. <span class="lnk" onclick="openModal('m-template')">Details</span></div></div>
+      <div class="step"><span class="ico a">!</span><div class="txt"><b>Drafting / design handoff.</b> Priya receives scope by email with no defined trigger, deliverable list, or turnaround expectation. <span class="lnk" onclick="openModal('m-drafting')">Details</span></div></div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head" onclick="togglePhase(this)"><h3>3 · Contract</h3><span class="chev">▶</span></div>
+    <div class="phase-body">
+      <div class="step"><span class="ico g">✓</span><div class="txt"><b>Proposal documents.</b> Professional and consistent; clients sign digitally in JobTread.</div></div>
+      <div class="step"><span class="ico a">!</span><div class="txt"><b>Estimate-to-contract handoff.</b> Proposal content is partially re-typed rather than generated from the approved estimate, creating a second version of scope. <span class="lnk" onclick="openModal('m-handoff')">Details</span></div></div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head" onclick="togglePhase(this)"><h3>4 · Pre-Construction</h3><span class="chev">▶</span></div>
+    <div class="phase-body">
+      <div class="step"><span class="ico a">!</span><div class="txt"><b>Selections &amp; allowances.</b> Tracked in Dana's spreadsheet; allowance decisions are made verbally and reconciled at close-out, which is where disputes are born. <span class="lnk" onclick="openModal('m-selections')">Details</span></div></div>
+      <div class="step"><span class="ico g">✓</span><div class="txt"><b>Permitting &amp; pre-con documents.</b> Dana's document organization in JobTread is consistent and complete.</div></div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head" onclick="togglePhase(this)"><h3>5 · Construction</h3><span class="chev">▶</span></div>
+    <div class="phase-body">
+      <div class="step"><span class="ico a">!</span><div class="txt"><b>Construction schedule.</b> A 400+ task schedule exists per job but is slow, over-detailed, and unused by the field; Cole runs a parallel whiteboard. <span class="lnk" onclick="openModal('m-schedule')">Details</span></div></div>
+      <div class="step"><span class="ico a">!</span><div class="txt"><b>Change orders.</b> Approved verbally, priced after the fact, and signed rarely. <span class="lnk" onclick="openModal('m-co')">Details</span></div></div>
+      <div class="step"><span class="ico a">!</span><div class="txt"><b>Daily logs.</b> Ran consistently until March 2026, then stopped when the template proved too long for field use. <span class="lnk" onclick="openModal('m-logs')">Details</span></div></div>
+      <div class="step"><span class="ico r">✕</span><div class="txt"><b>Bill entry &amp; job costing.</b> Bills enter QBO first and sync back uncategorized; real-time job costing is never accurate. <span class="lnk" onclick="openModal('m-bills')">Details</span></div></div>
+      <div class="step"><span class="ico g">✓</span><div class="txt"><b>Vendor &amp; sub records.</b> Complete contact records, insurance docs on file, consistent vendor coding. A real strength.</div></div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head" onclick="togglePhase(this)"><h3>6 · Close-Out</h3><span class="chev">▶</span></div>
+    <div class="phase-body">
+      <div class="step"><span class="ico a">!</span><div class="txt"><b>Client communication at close-out.</b> Punch lists are managed by email; the customer portal has never been activated. <span class="lnk" onclick="openModal('m-portal')">Details</span></div></div>
+      <div class="step"><span class="ico o">★</span><div class="txt"><b>Cost code refinement loop.</b> Here's the opportunity: an end-of-job review that pushes actual costs back into the catalog would make every future estimate sharper. <span class="lnk" onclick="openModal('m-costloop')">Details</span></div></div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head" onclick="togglePhase(this)"><h3>7 · Warranty</h3><span class="chev">▶</span></div>
+    <div class="phase-body">
+      <div class="step"><span class="ico a">!</span><div class="txt"><b>Warranty requests.</b> These arrive by text or call to Mark personally; no intake workflow, no tracking, no visibility for the team. <span class="lnk" onclick="openModal('m-warranty')">Details</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TAB 3 ===================== -->
+<section class="tab">
+  <h2 class="sec-title">Gaps &amp; Opportunities</h2>
+  <p class="sec-sub">Every finding, prioritized by business impact. Click any item for the full picture</p>
+
+  <div class="statrow">
+    <div class="stat red"><div class="n">2</div><div class="l">Proceed Conditions</div></div>
+    <div class="stat amb"><div class="n">4</div><div class="l">High Priority</div></div>
+    <div class="stat gld"><div class="n">4</div><div class="l">Medium Priority</div></div>
+    <div class="stat gld"><div class="n">4</div><div class="l">Opportunities</div></div>
+    <div class="stat grn"><div class="n">6</div><div class="l">Strengths</div></div>
+  </div>
+
+  <h2 class="sec-title green">Strengths</h2>
+  <p class="sec-sub">What's genuinely working, and what we protect during Phase 1</p>
+  <div class="item strength"><div class="t">Cost catalog is well-built and consistently coded</div><div class="d">Clean structure, current vendor pricing on core trades. This is the foundation everything else builds on, and it's already here.</div></div>
+  <div class="item strength"><div class="t">Every active job lives in JobTread</div><div class="d">No shadow jobs in spreadsheets or email. The system of record question is already answered.</div></div>
+  <div class="item strength"><div class="t">Vendor and subcontractor records are complete</div><div class="d">Contacts, insurance documents, and coding are in place. Vendor management needs tuning, not rebuilding.</div></div>
+  <div class="item strength"><div class="t">Proposals are professional and digitally signed</div><div class="d">Client-facing contract documents are consistent and signed inside JobTread.</div></div>
+  <div class="item strength"><div class="t">QuickBooks Online integration is connected and syncing</div><div class="d">The pipe exists. Only the direction of bill entry needs correcting, not the integration itself.</div></div>
+  <div class="item strength"><div class="t">The team wants this to work</div><div class="d">Six of seven responded, two external partners included. Nobody defended a workaround. They explained them, which is a team asking for better tools.</div></div>
+
+  <h2 class="sec-title red">Proceed Conditions</h2>
+  <p class="sec-sub">Correct in parallel with training, Weeks 1–2, or financial training produces misleading data</p>
+  <div class="item crit" onclick="openModal('m-template')"><div class="t">Budget templates exist but are used inconsistently</div><div class="d">Three of the last five estimates were copies of prior jobs, carrying stale pricing forward. <span class="tags"><span class="tag process">process</span><span class="tag software">software</span></span></div></div>
+  <div class="item crit" onclick="openModal('m-bills')"><div class="t">QBO bill entry direction is backwards</div><div class="d">Bills hit QuickBooks before the job, so costs land uncategorized and job costing is never real-time. <span class="tags"><span class="tag process">process</span><span class="tag software">software</span></span></div></div>
+
+  <h2 class="sec-title amber">High-Priority Gaps</h2>
+  <p class="sec-sub">Direct impact on margin, client experience, or operational reliability</p>
+  <div class="item high" onclick="openModal('m-co')"><div class="t">Change orders are verbal, unpriced, and unsigned</div><div class="d">Scope changes happen in conversation; the paper trail comes later or never. <span class="tags"><span class="tag process">process</span><span class="tag software">software</span></span></div></div>
+  <div class="item high" onclick="openModal('m-schedule')"><div class="t">Construction schedule needs restructuring</div><div class="d">Over-detailed, slow to load, abandoned by the field in favor of a whiteboard. Weeks 3–4, not deferred. <span class="tags"><span class="tag software">software</span><span class="tag communication">communication</span></span></div></div>
+  <div class="item high" onclick="openModal('m-selections')"><div class="t">Selections and allowances tracked in a spreadsheet</div><div class="d">Verbal allowance decisions reconciled at close-out, which is where disputes are born. <span class="tags"><span class="tag software">software</span><span class="tag communication">communication</span></span></div></div>
+  <div class="item high" onclick="openModal('m-drafting')"><div class="t">No defined drafting/design handoff with external partner</div><div class="d">Priya works from emailed scope with no trigger or turnaround standard. A drafting partner left waiting takes on other clients, so permit timelines slip. <span class="tags"><span class="tag communication">communication</span><span class="tag process">process</span></span></div></div>
+
+  <h2 class="sec-title gold">Medium-Priority Gaps</h2>
+  <p class="sec-sub">Process maturity and optimization</p>
+  <div class="item med" onclick="openModal('m-pipeline')"><div class="t">Lead pipeline lives in the owner's inbox</div><div class="d">No pipeline stages, no team visibility. CRM strategy to be confirmed with Mark before changes. <span class="tags"><span class="tag software">software</span><span class="tag process">process</span></span></div></div>
+  <div class="item med" onclick="openModal('m-logs')"><div class="t">Daily logs stopped in March 2026</div><div class="d">The template was too long for field reality. Rebuild the template before restarting the habit. <span class="tags"><span class="tag process">process</span><span class="tag software">software</span></span></div></div>
+  <div class="item med" onclick="openModal('m-handoff')"><div class="t">Estimate-to-contract content is re-typed</div><div class="d">A second version of scope is created by hand at contract stage. <span class="tags"><span class="tag software">software</span></span></div></div>
+  <div class="item med" onclick="openModal('m-warranty')"><div class="t">Warranty requests arrive by personal text to the owner</div><div class="d">No intake, no tracking, no team visibility, and an owner interrupt every time. <span class="tags"><span class="tag process">process</span><span class="tag communication">communication</span></span></div></div>
+
+  <h2 class="sec-title goldlight">Opportunities</h2>
+  <p class="sec-sub">Not broken, just underleveraged. These are the upside moves.</p>
+  <div class="item opp" onclick="openModal('m-portal')"><div class="t">Activate the customer portal so clients stop calling for updates</div><div class="d">Status, photos, selections, and approvals on the client's schedule, not yours. It's also a sales differentiator Crestline isn't using yet. <span class="tags"><span class="tag communication">communication</span><span class="tag software">software</span></span></div></div>
+  <div class="item opp" onclick="openModal('m-champion')"><div class="t">Dana Whitfield is the right Success Champion, so empower the role</div><div class="d">Highest initiative on the team, positional access to every job, already holding informal accountability. <span class="tags"><span class="tag people">people</span></span></div></div>
+  <div class="item opp" onclick="openModal('m-dashboards')"><div class="t">Role-specific dashboards: real-time margin without asking</div><div class="d">Mark currently asks Susan for numbers; an owner dashboard answers before the question is asked. <span class="tags"><span class="tag software">software</span></span></div></div>
+  <div class="item opp" onclick="openModal('m-costloop')"><div class="t">Close the estimate accuracy loop at end-of-job</div><div class="d">An archive routine that pushes actuals back into the cost catalog makes every future estimate sharper. <span class="tags"><span class="tag process">process</span><span class="tag software">software</span></span></div></div>
+</section>
+
+<!-- ===================== TAB 4: READINESS ASSESSMENT ===================== -->
+<section class="tab">
+  <h2 class="sec-title">Readiness Assessment</h2>
+  <p class="sec-sub">An honest read on readiness, and what to put in place so the engagement succeeds</p>
+
+  <div class="card">
+    <p>This is a candid, supportive read on how ready Crestline Custom Homes is to make a JobTread implementation actually <i>succeed</i>, drawn from the team's own assessment answers and the workflow review. The willingness and the talent are here. The work ahead is about capacity, foundation, and field enablement, all of which Phase 1 is built to address.</p>
+  </div>
+
+  <h2 class="sec-title gold">Readiness Scorecard</h2>
+  <p class="sec-sub">Where each dimension stands going in</p>
+  <table>
+    <tr><th>Readiness Dimension</th><th>Priority</th><th>Where it stands</th></tr>
+    <tr><td>Time &amp; capacity to implement</td><td>Build First</td><td>Mark's hours are fully committed to estimating, sales, and approvals. Protecting a weekly block is step one.</td></tr>
+    <tr><td>Internal system owner</td><td>Build First</td><td>Dana is the clear Success Champion candidate but holds no formal authority yet. Naming her early unlocks the rollout.</td></tr>
+    <tr><td>Team learning runway</td><td>Strengthen</td><td>The team responded thoughtfully and wants better tools, so adoption risk is moderate with the right pacing.</td></tr>
+    <tr><td>System &amp; data foundation</td><td>Build First</td><td>Inconsistent budget templates and backwards bill entry mean the foundation must be corrected before training lands.</td></tr>
+    <tr><td>Field enablement</td><td>Strengthen</td><td>Cole runs the field from a whiteboard. A simple, field-friendly mobile scope is the unlock.</td></tr>
+    <tr><td>Process maturity</td><td>Strengthen</td><td>Change orders, selections, and daily logs are informal. Light SOPs close most of this.</td></tr>
+    <tr><td>External partner handoffs</td><td>Monitor</td><td>Priya's drafting handoff has no defined trigger or turnaround, which is a business risk worth formalizing up front.</td></tr>
+  </table>
+
+  <h2 class="sec-title gold">What to Strengthen First</h2>
+  <p class="sec-sub">The prerequisites that de-risk the build</p>
+  <div class="item crit"><div class="t">1. Protected time to implement</div><div class="d">Implementations succeed when there's dedicated weekly time. The first move is carving out and protecting a realistic weekly block for the owner and Success Champion.</div></div>
+  <div class="item crit"><div class="t">2. An owner-backed Success Champion</div><div class="d">Dana, named openly to the team with real authority and protected time, so the system has an internal owner who isn't Mark.</div></div>
+  <div class="item crit"><div class="t">3. A foundation to build on</div><div class="d">Cost-code structure, one locked budget template, and the QBO bill-entry direction corrected, so every hour of training lands on something solid.</div></div>
+  <div class="item high"><div class="t">4. Field-crew enablement</div><div class="d">Cole's crew generates the data the whole system runs on. A simple mobile scope (schedule, photos, a 90-second daily log) is what makes a mobile system pay off.</div></div>
+  <div class="item high"><div class="t">5. Sharing the load off the owner</div><div class="d">Estimating, change orders, and approvals run through Mark by default. Giving the team the tools and authority to carry more is both the goal of the project and a prerequisite for it.</div></div>
+
+  <h2 class="sec-title gold">The Honest Bottom Line</h2>
+  <div class="card">
+    <p>The strengths are real: a willing team, a premium client experience, and an owner who knows the business cold. The question this review answers isn't whether Crestline is a good business or a good future client (it's both). It's whether a full implementation succeeds starting from where the account is today. On the evidence, the smarter move is to correct the foundation and protect the time first, which is exactly how Phase 1 is sequenced. Done well, it turns a risky launch into a confident one.</p>
+  </div>
+</section>
+
+<!-- ===================== TAB 5 ===================== -->
+<section class="tab">
+  <h2 class="sec-title">Phase 1 Scope: The 12-Week Engagement</h2>
+  <p class="sec-sub">Six two-week blocks, sequenced by business impact</p>
+
+  <div class="card">
+    <p>By Week 12, you will be reviewing margin on a dashboard instead of waiting on month-end. Your team will be estimating from one locked template, approving change orders in writing before work begins, and running the field from a schedule they trust. Your information will move from inbox-and-whiteboard to a single system that hands off automatically, from estimate to contract, from contract to field, from field to billing, from close-out back into sharper estimates. And Dana will be holding it accountable so you don't have to.</p>
+  </div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 1–2 · Foundation &amp; Conditions</h3><span>Proceed conditions corrected here</span></div><div class="wk-body"><ul>
+    <li>Front-end workflow mapping kickoff: lead → estimate → drafting → contract, including Priya's handoff triggers and turnaround standards</li>
+    <li>Owner role vision capture: Estimator and Project Coordinator roles for the 10-builds-a-year company</li>
+    <li>Success Champion confirmation: Dana Whitfield, role defined and announced</li>
+    <li>Budget template standardization, with one master template locked and job-copying retired (Condition 1)</li>
+    <li>Finance workflow correction session with Susan: JobTread-first bill entry SOP built together (Condition 2)</li>
+    <li>CRM / lead pipeline review and strategy decision with Mark</li>
+    <li>Notification settings cleanup so the right people hear about the right things</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 3–4 · Schedule Restructuring</h3><span>High priority, and deliberately not deferred</span></div><div class="wk-body"><ul>
+    <li>Construction schedule rebuilt: right-sized task structure the field will actually use</li>
+    <li>Schedule template created so every new job starts correct</li>
+    <li>Field rollout with Cole, replacing the whiteboard rather than competing with it</li>
+    <li>Document template cleanup begun</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 5–6 · Change Orders &amp; Field Communication</h3><span>Margin protection</span></div><div class="wk-body"><ul>
+    <li>Change order workflow: priced, signed, and published to field before work begins</li>
+    <li>CO fee and markup structure decided and built into the template</li>
+    <li>Daily log template rebuilt for field reality, then the habit restarted</li>
+    <li>Field communication documents standardized</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 7–8 · Procurement &amp; Vendors</h3><span>Operational reliability</span></div><div class="wk-body"><ul>
+    <li>Purchase order workflow built and connected to the budget</li>
+    <li>Procurement cadence defined for long-lead items</li>
+    <li>Vendor role permissions and notification tuning (the foundation is solid, so this is just refinement)</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 9–10 · Client Experience</h3><span>The calls stop coming to you</span></div><div class="wk-body"><ul>
+    <li>Customer portal activated and rolled out on an active job</li>
+    <li>Selections template built, Dana's spreadsheet retired, and decisions flow into budget and schedule</li>
+    <li>Client communication workflow: who says what, when, in the system</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 11–12 · Visibility &amp; Handoff</h3><span>The system becomes self-running</span></div><div class="wk-body"><ul>
+    <li>Role-specific dashboards: owner margin view, PM job view, office workflow view</li>
+    <li>WIP data flow confirmed end-to-end with Susan</li>
+    <li>End-of-job archive routine built so actuals feed the cost catalog</li>
+    <li>Success Champion handoff and Advocate Playbook delivered to Dana</li>
+    <li>Phase 1 close and Legacy Builder Program transition conversation</li>
+  </ul></div></div>
+
+  <h2 class="sec-title">Coverage</h2>
+  <p class="sec-sub">Every gap and opportunity, mapped to where it lands</p>
+  <table>
+    <tr><th>Finding</th><th>Severity</th><th>Lands In</th><th>What the owner sees when it's done</th></tr>
+    <tr><td>Budget template consistency</td><td>Condition</td><td>Weeks 1–2</td><td>Every estimate starts from one current, trusted template</td></tr>
+    <tr><td>Bill entry direction</td><td>Condition</td><td>Week 2</td><td>Job costing matches reality the day a bill arrives</td></tr>
+    <tr><td>Construction schedule</td><td>High</td><td>Weeks 3–4</td><td>One schedule, used by office and field alike</td></tr>
+    <tr><td>Drafting handoff (Priya)</td><td>High</td><td>Weeks 1–2</td><td>Defined trigger, deliverables, and turnaround, so permits stop slipping</td></tr>
+    <tr><td>Change orders</td><td>High</td><td>Weeks 5–6</td><td>Signed, priced approvals before work begins</td></tr>
+    <tr><td>Selections &amp; allowances</td><td>High</td><td>Weeks 9–10</td><td>Decisions documented, dated, and in the budget</td></tr>
+    <tr><td>Lead pipeline</td><td>Medium</td><td>Weeks 1–2</td><td>Every lead visible, staged, and followed up</td></tr>
+    <tr><td>Daily logs</td><td>Medium</td><td>Weeks 5–6</td><td>A field-friendly log running daily again</td></tr>
+    <tr><td>Estimate-to-contract re-typing</td><td>Medium</td><td>Weeks 5–6</td><td>Proposals generate from the approved estimate</td></tr>
+    <tr><td>Warranty intake</td><td>Medium</td><td>Weeks 11–12</td><td>Requests tracked in the system, not on your phone</td></tr>
+    <tr><td>Customer portal</td><td>Opportunity</td><td>Weeks 9–10</td><td>Clients self-serve updates; status calls disappear</td></tr>
+    <tr><td>Success Champion (Dana)</td><td>Opportunity</td><td>Weeks 1–2 → 12</td><td>The system has an internal owner who isn't you</td></tr>
+    <tr><td>Role-specific dashboards</td><td>Opportunity</td><td>Weeks 11–12</td><td>Real-time margin without asking anyone</td></tr>
+    <tr><td>Cost code refinement loop</td><td>Opportunity</td><td>Weeks 11–12</td><td>Every closed job makes the next estimate sharper</td></tr>
+  </table>
+</section>
+
+<!-- ===================== TAB 6: IMPLEMENTATION ROADMAP ===================== -->
+<section class="tab">
+  <h2 class="sec-title">Implementation Roadmap</h2>
+  <p class="sec-sub">Your 12-week engagement, week by week, with payment milestones</p>
+
+  <div class="card">
+    <p>This is the week-by-week view of the 12-week engagement. We build the tools with you each week; your Success Champion co-leads every team rollout so the knowledge stays in-house. Target dates are illustrative and set when we schedule your start. Three payments align to the start, Week 6, and Week 11.</p>
+  </div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Invoice #1 · Implementation Start</h3><span>Foundation build begins</span></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Week 1 · Foundation &amp; Cost Backbone</h3><span>The structure everything else sits on</span></div><div class="wk-body"><ul>
+    <li>Build the cost-code structure from your trade categories; configure cost types and units</li>
+    <li>Map team to JobTread users; set roles &amp; permissions</li>
+    <li>Account hygiene cleanup and naming conventions</li>
+    <li>Success Champion confirmed (Dana) and training session 1</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Week 2 · Pipeline, Templates &amp; Finance Direction</h3><span>Front end and the QBO correction</span></div><div class="wk-body"><ul>
+    <li>Build the CRM pipeline stages from your sales process; add Lead Source tracking</li>
+    <li>Develop the proposal and contract document templates</li>
+    <li>Finance working session with Susan: reverse bill entry to JobTread-first, build the SOP together</li>
+    <li>Champion training session 2</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 3–4 · Budget Templates &amp; Schedule</h3><span>Reusable budgets and a schedule the field will use</span></div><div class="wk-body"><ul>
+    <li>Build the master budget template with assemblies; retire job-copying</li>
+    <li>Rebuild the construction schedule at the right altitude; create a schedule template</li>
+    <li>Field rollout with Cole, replacing the whiteboard rather than competing with it</li>
+    <li>Champion training sessions 3–4</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 5–6 · Change Orders, Daily Logs &amp; Champion Ready</h3><span>Margin protection and live data</span></div><div class="wk-body"><ul>
+    <li>Build the change-order workflow with e-signature, CO fee/markup, and auto budget + schedule updates</li>
+    <li>Rebuild the daily log template and restart the habit with Cole</li>
+    <li>Import customer list, load active jobs, finalize document templates</li>
+    <li>Champion completes full system walkthrough; pre-rollout comms sent</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Invoice #2 · End of Week 6</h3><span>Second payment milestone</span></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 7–8 · Team Rollout &amp; Procurement</h3><span>The habit-building tools go live</span></div><div class="wk-body"><ul>
+    <li>Live team kickoff with the Success Champion co-leading; recording distributed</li>
+    <li>Build the purchase-order workflow connected to the budget</li>
+    <li>Vendor role permissions and notification tuning</li>
+    <li>Mid-week check-in and end-of-week adoption review</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Weeks 9–10 · Client Experience &amp; Selections</h3><span>The status calls stop coming to you</span></div><div class="wk-body"><ul>
+    <li>Activate the customer portal and roll it out on an active job</li>
+    <li>Build the selections template; retire Dana's spreadsheet, flow decisions into budget and schedule</li>
+    <li>Define the client communication workflow: who says what, when, in the system</li>
+    <li>Adoption review and follow-ups</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Week 11 · Invoicing &amp; Financial Closure</h3><span>Billing flows from the system</span></div><div class="wk-body"><ul>
+    <li>Complete the QBO two-way sync; invoice from JobTread on your draw schedule</li>
+    <li>Confirm WIP data flows end-to-end with Susan</li>
+    <li>Verify QBO sync and run an adoption review</li>
+  </ul></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Invoice #3 · End of Week 11</h3><span>Final payment milestone</span></div></div>
+
+  <div class="wkblock"><div class="wk-head"><h3>Week 12 · Dashboards, Handoff &amp; Graduation</h3><span>The system becomes self-running</span></div><div class="wk-body"><ul>
+    <li>Configure role-specific dashboards: owner margin view, PM job view, office workflow view</li>
+    <li>Build the end-of-job archive routine so actuals feed the cost catalog</li>
+    <li>Success Champion handoff and the Success Champion Playbook delivered to Dana</li>
+    <li>Deliver the 60/90-day plan; onboard to the JobTread Support Lab; Phase 1 close and Legacy Builder Program transition conversation</li>
+  </ul></div></div>
+
+  <div class="card">
+    <p><strong>How it works:</strong> we meet for roughly 90 minutes each week on a fixed day and time; we spend another 6–8 hours weekly building your tools behind the scenes. Your Success Champion co-leads every rollout so the knowledge stays in-house. By Week 12 you graduate with the system running and a 60/90-day plan, and ongoing coaching is available month-to-month through the Legacy Builder Program.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="serif">Let's build something that lasts.</div>
+  <div>LuxeCraft Consulting &nbsp;·&nbsp; luxecraftconsulting.com &nbsp;·&nbsp; Sample report. All client details are fictional and illustrative</div>
+</footer>
+
+<!-- ===================== MODALS ===================== -->
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-head"><h3 id="mTitle"></h3><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<script>
+function showTab(i,btn){
+  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function togglePhase(h){h.parentElement.classList.toggle('open');}
+
+const MODALS={
+ 'm-template':{t:'Budget templates exist but are used inconsistently',s:'Crestline built estimate templates in 2024, but three of the last five jobs were estimated by copying a previous job instead, carrying forward stale unit pricing, retired cost codes, and another client\u2019s structure.',i:'Every copied estimate is a margin risk you can\u2019t see: old pricing under-bids today\u2019s costs, and inconsistent structure means no two budgets can be compared. It also keeps estimating on the owner\u2019s desk, because only Mark knows which copied numbers to distrust.',r:'Lock one master estimate template as the only starting point for new jobs, retire job-copying, and update unit costs on a defined cadence, so any trained team member can build 80% of an estimate Mark can trust.',j:'A single JobTread estimate template with current Cost Catalog pricing, protected as the default for new jobs; template governance assigned to the Success Champion.'},
+ 'm-bills':{t:'QBO bill entry direction is backwards',s:'Bills are entered into QuickBooks Online first (Susan\u2019s long-standing habit) and sync back into JobTread, where they land uncategorized against the job budget.',i:'Real-time job costing is never accurate, so Mark doesn\u2019t trust the numbers until month-end close, which means pricing and change-order decisions are made on stale data. Susan and the PM then reconcile by email, a handoff that exists only because the data entered the wrong door.',r:'Reverse the direction: bills enter JobTread first, categorized to the budget at entry, and sync to QBO. Introduce this with Susan in a scheduled Week 2 working session and build the SOP together. We don\u2019t pause her current process before the replacement exists.',j:'JobTread-first bill entry workflow with cost-code categorization at entry; QBO sync direction confirmed; written SOP co-owned by Susan.'},
+ 'm-co':{t:'Change orders are verbal, unpriced, and unsigned',s:'Scope changes are approved in conversation, whether on site, by text, or by phone, and priced after the fact. Signatures are collected rarely, usually only when something has already gone sideways.',i:'This is the single largest margin leak in the business. Unsigned changes become disputed changes; unpriced changes become absorbed costs. It also makes Mark the approval bottleneck twice: once verbally, once chasing paperwork. And the field learns about changes from the client.',r:'Every scope change gets a priced, signed digital change order before work begins, with a standard CO fee and markup structure so pricing isn\u2019t reinvented each time. Signed COs publish automatically to the field schedule.',j:'JobTread change order workflow with digital signature, CO fee/markup built into the template, and automatic budget + schedule updates on approval.'},
+ 'm-schedule':{t:'Construction schedule needs restructuring',s:'Each job carries a 400+ task schedule that is slow to load, too granular to maintain, and unused by the field. Cole runs the real schedule on a whiteboard, updated by group text.',i:'Two schedules means no schedule. The office plans against one version of reality and the field builds against another, and every mismatch is a dropped handoff, a sub showing up to an unready site, or a client promised the wrong date. The oversized schedule has also caused system performance complaints that suppress adoption generally.',r:'Rebuild the schedule at the right altitude, with phases and milestones the field will actually maintain, and roll it out with Cole as the replacement for the whiteboard, not a competitor to it. Prioritized in Weeks 3–4, not deferred.',j:'A restructured JobTread schedule template (right-sized task structure, baselined milestones), mobile field access for Cole\u2019s crew, and automated notifications on schedule changes.'},
+ 'm-selections':{t:'Selections and allowances tracked in a spreadsheet',s:'Dana maintains a selections spreadsheet per job. Allowance decisions are made verbally with the client and reconciled against the spreadsheet at close-out.',i:'Verbal allowance decisions are tomorrow\u2019s disputes. At close-out, the client remembers a different number, and the difference comes out of margin or goodwill. The spreadsheet also never talks to the budget or schedule, so an approved selection doesn\u2019t move procurement or update job cost until someone re-enters it.',r:'Move selections into the system: every option priced, every client decision signed and dated, every approval flowing straight into the budget and procurement. Dana\u2019s spreadsheet gets retired with honors, since she built it because nothing better existed.',j:'JobTread Selections module with allowance tracking, client e-approval, and automatic budget integration; milestone deadlines tied to the schedule.'},
+ 'm-drafting':{t:'No defined drafting/design handoff with external partner',s:'Priya (external designer/draftsman) receives scope by email with no standard trigger, deliverable checklist, or turnaround expectation, and reports finding out about revisions late.',i:'This is a business risk, not a communication preference. A drafting partner left waiting takes on other clients; revision cycles stretch; permit submittals slip; and every slipped permit pushes a start date the client was promised. Priya\u2019s assessment response was one of the most revealing in the entire discovery.',r:'Define the handoff: what triggers Priya\u2019s engagement, what she receives, what she returns, and the expected turnaround, then give her visibility into the jobs she\u2019s working.',j:'Limited-access JobTread role for Priya with to-do based handoff checklists on the job template, so the drafting trigger fires automatically on every new job.'},
+ 'm-pipeline':{t:'Lead pipeline lives in the owner\u2019s inbox',s:'Leads arrive by email and referral call, are qualified by Mark from memory, and exist nowhere the team can see until a job is created.',i:'Follow-ups depend on the owner\u2019s recall; no one can cover leads when Mark travels; and there is no data on close rates or lead sources to guide marketing spend. It\u2019s also one more category of work only the owner can do.',r:'Stand up a simple staged pipeline so every lead is visible, assigned, and followed up, after confirming the CRM strategy with Mark in Week 1 (we don\u2019t migrate leads before that decision).',j:'JobTread sales pipeline with defined stages, follow-up to-dos, and lead source tracking.'},
+ 'm-logs':{t:'Daily logs stopped in March 2026',s:'Daily logs ran consistently through early 2026, then stopped in March when the template, at 14 required fields, proved too heavy for field reality.',i:'No daily record means client questions, sub disputes, and warranty claims are settled by memory. It also cuts the office\u2019s only daily window into the field, so problems surface when they\u2019re expensive instead of when they\u2019re small.',r:'Rebuild the template before restarting the habit: photos, weather, crew, and one narrative field, about 90 seconds on a phone. Then relaunch with Cole as a tool that protects him, not a report that audits him.',j:'A simplified JobTread daily log template optimized for mobile, with automated reminders and office visibility.'},
+ 'm-handoff':{t:'Estimate-to-contract content is re-typed',s:'When an estimate is approved, scope language is partially re-typed into the proposal document rather than generated from the estimate itself.',i:'Re-typing creates a second version of scope, and every difference between the two versions is a future argument about what was sold. It also adds hours of office work per contract that the system should be doing.',r:'Generate proposals directly from the approved estimate so the contract and the budget are the same document wearing different clothes.',j:'JobTread document templates pulling scope, pricing, and allowances directly from the estimate; one source of truth from sale through close-out.'},
+ 'm-warranty':{t:'Warranty requests arrive by personal text to the owner',s:'Past clients text or call Mark directly with warranty items. There is no intake form, no tracking, and no team visibility into open items.',i:'Every warranty text is an owner interrupt, and untracked items are reputation risk, since the request that falls through a text thread becomes the review that mentions it. Warranty is also Crestline\u2019s best referral moment, currently running with no process at all.',r:'Give warranty a front door: a simple intake that routes to the team, tracks to resolution, and closes the loop with the client, all without Mark in the middle.',j:'JobTread warranty job workflow with client intake via the portal, assigned to-dos, and resolution tracking.'},
+ 'm-portal':{t:'Activate the customer portal',s:'The JobTread customer portal has never been turned on. Clients get updates by calling Mark or emailing Dana.',i:'Every status call is owner time spent answering a question the system could answer. And in Crestline\u2019s market, a live client portal with photos, schedule, selections, and approvals is a sales differentiator competitors are already using.',r:'Free the owner from being the project hotline: activate the portal so clients see updates and sign approvals on their schedule, not yours. Roll it out on one active job first, then make it standard.',j:'JobTread customer portal: schedule visibility, photo feeds, selections approval, document access, and change order signatures, all client-facing and all automatic.'},
+ 'm-champion':{t:'Dana Whitfield is the right Success Champion',s:'Dana scored highest on initiative across the entire assessment: she built her own selections tracking system, watched JobTread training videos unprompted, and already holds informal accountability over job documentation.',i:'Every system needs an internal owner, and right now that owner is Mark by default, which means the system competes with everything else on his plate. Dana is ready for more than her current role asks of her; underusing her risks losing her.',r:'Name Dana as Success Champion before Week 1, define the role openly with the team, and build her authority into the rollout. This is an owner decision that unlocks both a better-run system and a more engaged key employee.',j:'Success Champion role with admin-adjacent permissions, template governance, and the LuxeCraft Success Champion Playbook delivered in Week 12.'},
+ 'm-dashboards':{t:'Role-specific dashboards: real-time margin without asking',s:'Everyone currently sees the same default JobTread views. Mark gets financial answers by asking Susan; Travis gets schedule answers by asking the field.',i:'Information that requires asking is information that arrives late. The owner should see live margin per job at a glance; the PM should see schedule health; the office should see what\u2019s waiting on whom, without anyone composing an email.',r:'Build three dashboards (owner, PM, office) so each role opens JobTread to exactly the answers their day depends on.',j:'JobTread custom dashboards and saved views per role, configured in Weeks 11–12 once clean data is flowing from the corrected workflows.'},
+ 'm-costloop':{t:'Close the estimate accuracy loop at end-of-job',s:'Completed jobs are archived without a structured review of estimated vs. actual costs, so the cost catalog never learns from finished work.',i:'Every estimate is only as sharp as the catalog behind it. Without a feedback loop, the same line items get under-bid job after job, a quiet, compounding margin leak that no one ever sees as a single event.',r:'Build a 30-minute end-of-job routine: compare actuals to estimate, update the unit costs that drifted, archive the job. Every closed job makes the next bid sharper.',j:'JobTread budget vs. actual reporting feeding a cost catalog update checklist, run by the Success Champion as part of the job close-out template.'}
+};
+function openModal(id){
+  const m=MODALS[id]; if(!m)return;
+  document.getElementById('mTitle').textContent=m.t;
+  document.getElementById('mBody').innerHTML=
+    '<div class="mb-sec"><h5>Current Situation</h5><p>'+m.s+'</p></div>'+
+    '<div class="mb-sec"><h5>Business Impact</h5><p>'+m.i+'</p></div>'+
+    '<div class="mb-sec"><h5>Recommendation</h5><p>'+m.r+'</p></div>'+
+    '<div class="mb-sec jt"><h5>In JobTread</h5><p>'+m.j+'</p></div>';
+  document.getElementById('modalBg').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('modalBg').classList.remove('show');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>
